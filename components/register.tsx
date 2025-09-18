@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import axiosInstance from "../app/api/axiosInstance";   
 
 interface RegisterProps {
@@ -17,7 +17,7 @@ const Register: React.FC<RegisterProps> = ({ setToken }) => {
     setError(null);
 
     try {
-      const response = await axiosInstance.post("/api/auth/register", { username, email, password });
+      const response = await axiosInstance.post("/api/auth/register", { nom_utilisateur : username , email, mot_de_passe: password });
       const data = response.data;
 
       if (response.status !== 200) {
